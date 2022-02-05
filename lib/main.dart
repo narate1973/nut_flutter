@@ -16,7 +16,7 @@ void runApplication() {
     MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => appCubit),
-        BlocProvider(create: (context) => AuthCubit(appCubit: appCubit)..checkAuth()),
+        BlocProvider(create: (context) => AuthCubit(appCubit: appCubit)),
       ],
       child: MyApp.create(),
     ),

@@ -10,7 +10,7 @@ class AppSplashScreen extends StatelessWidget {
       body: const Center(
         child: Text(
           'Security',
-          style: TextStyle(fontSize: 70),
+          style: TextStyle(fontSize: 70, color: Colors.white),
         ),
       ),
     );

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
+import 'package:provider/src/provider.dart';
 
 class DrawerPage extends StatelessWidget {
   const DrawerPage._({Key? key}) : super(key: key);
@@ -7,10 +9,11 @@ class DrawerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authCubit = context.read<AuthCubit>();
     return Drawer(
       child: Material(
         color: Theme.of(context).primaryColor,
-        child: ListView(
+        child: Column(
           children: [
             DrawerHeader(
               child: Text(
@@ -33,6 +36,13 @@ class DrawerPage extends StatelessWidget {
             ListTile(
               title: const Text('Item 3'),
               onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('sign out'),
+              onTap: () {
+                authCubit.signOut();
                 Navigator.pop(context);
               },
             ),

@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nut_flutter/features/home/presentation/view/pages/home_navigation_page.dart';
+import 'package:nut_flutter/features/login/presentation/view/pages/login_page.dart';
+import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
+import 'package:nut_flutter/myApp/view/app_splash_screen.dart';
+import 'package:nut_flutter/myApp/view/overlay_layout.dart';
+
+class MyApp extends StatelessWidget {
+  const MyApp._({Key? key}) : super(key: key);
+
+  static Widget create() => const MyApp._();
+
+  static Future<void> setUpApplciation() async {
+    WidgetsFlutterBinding.ensureInitialized();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: OverlayLayout(
+        child: BlocBuilder<AuthCubit, AuthState>(
+          builder: (context, state) {
+            if (state is AuthAuthed) {
+              return HomeNavigationPage.create();
+            }
+            if (state is AuthUnAuthed) {
+              return LoginPage.create();
+            }
+            return const AppSplashScreen();
+          },
+        ),
+      ),
+    );
+  }
+}

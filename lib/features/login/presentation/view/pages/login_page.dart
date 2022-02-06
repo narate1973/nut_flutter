@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nut_flutter/core/core.dart';
 import 'package:nut_flutter/features/login/presentation/bloc/login_cubit/login_cubit.dart';
 import 'package:nut_flutter/myApp/bloc/app_cubit/app_cubit.dart';
-import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage._({Key? key}) : super(key: key);
 
   static Widget create() => BlocProvider(
+        key: const Key('login-page'),
         create: (context) => LoginCubit(appCubit: context.read<AppCubit>()),
         child: const LoginPage._(),
       );
@@ -16,7 +16,6 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginCubit = context.read<LoginCubit>();
-    final authCubit = context.read<AuthCubit>();
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
@@ -50,6 +49,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       AppTextField(
+                        key: const Key('login-page-email-field'),
                         hintText: 'Email',
                         onChange: (String email) {
                           loginCubit.onEmailChanged(email);
@@ -57,6 +57,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       AppTextField(
+                        key: const Key('login-page-password-field'),
                         hintText: 'Password',
                         obscureText: true,
                         onChange: (String password) {
@@ -65,6 +66,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       AppButton(
+                        key: const Key('login-page-login-button'),
                         isLoading: state.isLoading,
                         enabled: state.isValid,
                         title: 'Login',

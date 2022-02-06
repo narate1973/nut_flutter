@@ -3,6 +3,13 @@ import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
 import 'package:glob/glob.dart';
 
+import 'steps/app_load.dart';
+import 'steps/chill_out.dart';
+import 'steps/element_load.dart';
+import 'steps/fill_text.dart';
+import 'steps/tap.dart';
+import 'steps/tap_tooltips.dart';
+
 Future<void> main() {
   final config = FlutterTestConfiguration()
     ..features = [Glob(r"test_driver/features/*.feature")]
@@ -19,14 +26,23 @@ Future<void> main() {
     ..hooks = [
       AttachScreenshotOnFailedStepHook(),
     ]
-    ..stepDefinitions = []
+    ..stepDefinitions = [
+      tapElement(),
+      tapByToolTips(),
+      appLoad(),
+      ElementLoaded(),
+      // scrollUntil(),
+      chillOut(),
+      // tapAndWait(),
+      fillTextField(),
+    ]
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppWorkingDirectory = './'
     ..targetAppPath = "test_driver/app.dart"
     // ..buildFlavor = "staging" // uncomment when using build flavor and check android/ios flavor setup see android file android\app\build.gradle
     ..targetDeviceId =
-        "47771B80-785D-4544-909F-E95800DFFF8B" // uncomment to run tests on all connected devices or set specific device target id
+        "emulator-5554" // uncomment to run tests on all connected devices or set specific device target id
     // ..tagExpression = "@smoke" // uncomment to see an example of running scenarios based on tag expressions
     ..logFlutterProcessOutput =
         true; // uncomment to see command invoked to start the flutter test app

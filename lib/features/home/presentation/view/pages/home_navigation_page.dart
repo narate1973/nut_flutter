@@ -10,7 +10,9 @@ class HomeNavigationPage extends StatelessWidget {
 
   static Widget create() => BlocProvider(
         create: (context) => HomeNavigationCubit(),
-        child: const HomeNavigationPage._(),
+        child: const HomeNavigationPage._(
+          key: Key('home-navigation-page'),
+        ),
       );
 
   static final screen = [

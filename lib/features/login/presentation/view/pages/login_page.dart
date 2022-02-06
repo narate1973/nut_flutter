@@ -33,7 +33,15 @@ class LoginPage extends StatelessWidget {
               child: BlocConsumer<LoginCubit, LoginState>(
                 listener: (context, state) {
                   if (state.isSuccess) {
-                    loginCubit.emitCleatState();
+                    loginCubit.emitClearState();
+                  }
+                  if (state.isFailed) {
+                    loginCubit.emitClearStatus();
+                    AppToast.showError(
+                      context,
+                      key: const Key('login-page-failed-toast'),
+                      message: 'login failed',
+                    );
                   }
                 },
                 builder: (context, state) {

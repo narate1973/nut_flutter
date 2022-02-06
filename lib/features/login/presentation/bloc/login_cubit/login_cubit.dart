@@ -9,6 +9,10 @@ class LoginCubit extends Cubit<LoginState> {
   final AppCubit appCubit;
   LoginCubit({required this.appCubit}) : super(const LoginState());
 
+  void emitClearState() => emit(const LoginState());
+
+  void emitClearStatus() => emit(state.clearStatus());
+
   void onEmailChanged(String email) {
     emit(state.copyWith(email: email));
   }
@@ -16,8 +20,6 @@ class LoginCubit extends Cubit<LoginState> {
   void onPasswordChanged(String password) {
     emit(state.copyWith(password: password));
   }
-
-  void emitCleatState() => emit(const LoginState());
 
   void onLoginPressed() async {
     emit(state.loading());
@@ -35,8 +37,12 @@ class LoginCubit extends Cubit<LoginState> {
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
       }
+      emit(state.failed());
+      appCubit.emitLoading(false);
     } catch (e) {
       print(e);
+      emit(state.failed());
+      appCubit.emitLoading(false);
     }
   }
 }

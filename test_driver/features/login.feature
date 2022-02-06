@@ -1,6 +1,6 @@
 Feature: Login 
 
-    Scenario: I first time dowload the app
+    Scenario: Login with correct account
 
         Given "login-page" appeared
 

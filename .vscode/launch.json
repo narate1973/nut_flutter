@@ -5,15 +5,26 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "nut-flutter-app",
+            "name": "nut-flutter-dev",
             "request": "launch",
             "type": "dart",
             "args": [
-     
+                "--flavor",
+                "dev",
                 "-t",
                 "lib/main.dart",
             ],
         },
-        
+        {
+            "name": "nut-flutter-prod",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "prod",
+                "-t",
+                "lib/main.dart",
+            ],
+        },
     ]
 }

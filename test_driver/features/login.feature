@@ -18,6 +18,9 @@ Feature: Login
 
         Then I fill "login-page-email-field" with "narate65.13@gmail.com"
         Then I fill "login-page-password-field" with "12345678"
+        # Then I fill "login-page-password-field" with "87654321"
+        # for dev flavor
+
 
         When I tap the "login-page-login-button"
         

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "33776999967",
+    "project_id": "nutgcpdev",
+    "storage_bucket": "nutgcpdev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33776999967:android:1a8fd416fdc1d00d9cbf2a",
+        "android_client_info": {
+          "package_name": "com.example.nut_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33776999967-ddhtq5grkqqrnq7f3vhe6bhhg8nlaoq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsyYfAPIepDPaNGq73FeWO5FTQOQfBK6E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33776999967-ddhtq5grkqqrnq7f3vhe6bhhg8nlaoq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

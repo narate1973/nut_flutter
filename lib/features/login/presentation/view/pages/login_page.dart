@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nut_flutter/core/core.dart';
 import 'package:nut_flutter/features/login/presentation/bloc/login_cubit/login_cubit.dart';
 import 'package:nut_flutter/myApp/bloc/app_cubit/app_cubit.dart';
+import 'package:nut_flutter/myApp/view/my_app.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage._({Key? key}) : super(key: key);
@@ -25,7 +26,7 @@ class LoginPage extends StatelessWidget {
           children: [
             Container(
               margin: const EdgeInsets.only(right: 30, left: 30),
-              height: 275,
+              padding: const EdgeInsets.only(top: 30, bottom: 30),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: Colors.white,
@@ -54,6 +55,11 @@ class LoginPage extends StatelessWidget {
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
                         ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        MyApp.appName,
+                        style: const TextStyle(fontSize: 12),
                       ),
                       const SizedBox(height: 16),
                       AppTextField(

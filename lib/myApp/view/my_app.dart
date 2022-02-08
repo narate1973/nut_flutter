@@ -15,6 +15,8 @@ class MyApp extends StatelessWidget {
   static Future<void> setUpApplciation() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
+    final apps = Firebase.apps.first;
+    print('=====> apps: ${apps.options.projectId}');
   }
 
   @override

@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nut_flutter/core/core.dart';
 import 'package:nut_flutter/features/home/presentation/view/pages/home_navigation_page.dart';
 import 'package:nut_flutter/features/login/presentation/view/pages/login_page.dart';
 import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
@@ -13,10 +12,9 @@ class MyApp extends StatelessWidget {
 
   static Widget create() => const MyApp._();
 
-  static String appName = AppEnv.appName;
+  static String appName = 'Nut Flutter';
 
   static Future<void> setUpApplciation() async {
-    await AppEnv.setUp();
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
     final apps = Firebase.apps.first;

@@ -40,7 +40,8 @@ Future<void> main() {
     ..restartAppBetweenScenarios = true
     ..targetAppWorkingDirectory = './'
     ..targetAppPath = "test_driver/app.dart"
-    // ..buildFlavor = "staging" // uncomment when using build flavor and check android/ios flavor setup see android file android\app\build.gradle
+    ..buildFlavor =
+        "dev" // uncomment when using build flavor and check android/ios flavor setup see android file android\app\build.gradle
     ..targetDeviceId =
         "emulator-5554" // uncomment to run tests on all connected devices or set specific device target id
     // ..tagExpression = "@smoke" // uncomment to see an example of running scenarios based on tag expressions
@@ -58,3 +59,4 @@ Future<void> main() {
 // When I tap on "ytd"
 // Then I shoud see "ytd" graph
 // And  Graph data change
+

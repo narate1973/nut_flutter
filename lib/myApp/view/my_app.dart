@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:nut_flutter/core/core.dart';
+import 'package:nut_flutter/core/network/app_api_service.dart';
 import 'package:nut_flutter/features/home/presentation/view/pages/home_navigation_page.dart';
-import 'package:nut_flutter/features/login/presentation/view/pages/login_page.dart';
+import 'package:nut_flutter/features/auth/presentation/view/pages/login_page.dart';
 import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
 import 'package:nut_flutter/myApp/view/app_splash_screen.dart';
 import 'package:nut_flutter/myApp/view/overlay_layout.dart';
@@ -21,9 +21,7 @@ class MyApp extends StatelessWidget {
     WidgetsFlutterBinding.ensureInitialized();
     await FlutterConfig.loadEnvVariables();
     await Firebase.initializeApp();
-    final apps = Firebase.apps.first;
-    print('=====> apps: ${apps.options.projectId}');
-    print('=====> app build mode $kDebugMode');
+    AppApiService.setUp(baseURL: FlutterConfig.get(AppEnv.baseURL));
   }
 
   @override

@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "33776999967",
-    "project_id": "nutgcpdev",
-    "storage_bucket": "nutgcpdev.appspot.com"
+    "project_number": "278763047719",
+    "project_id": "poc-project-341403",
+    "storage_bucket": "poc-project-341403.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:33776999967:android:1a8fd416fdc1d00d9cbf2a",
+        "mobilesdk_app_id": "1:278763047719:android:e7f7963cd9903333627702",
         "android_client_info": {
           "package_name": "com.example.nut_flutter"
         }
       },
       "oauth_client": [
         {
-          "client_id": "33776999967-ddhtq5grkqqrnq7f3vhe6bhhg8nlaoq1.apps.googleusercontent.com",
+          "client_id": "278763047719-dkdvsq1lrafjru1us3d69v7kuicj0isf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCsyYfAPIepDPaNGq73FeWO5FTQOQfBK6E"
+          "current_key": "AIzaSyDdFAk5gsAfFa4y03_ShofMJRyPZKmG2ek"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "33776999967-ddhtq5grkqqrnq7f3vhe6bhhg8nlaoq1.apps.googleusercontent.com",
+              "client_id": "278763047719-dkdvsq1lrafjru1us3d69v7kuicj0isf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -16,7 +16,7 @@ Feature: Login
 
         Given "login-page" appeared
 
-        Then I fill "login-page-email-field" with "nutgcp@dev.com"
+        Then I fill "login-page-email-field" with "poc@project.com"
         Then I fill "login-page-password-field" with "12345678"
         # Then I fill "login-page-password-field" with "87654321"
         # for dev flavor

@@ -17,7 +17,7 @@ class LoginState extends Equatable {
 
   bool get isValid => email.isNotEmpty && password.isNotEmpty;
 
-  LoginState clearStatus() => const LoginState(
+  LoginState clearStatus() => copyWith(
         isFailed: false,
         isLoading: false,
         isSuccess: false,

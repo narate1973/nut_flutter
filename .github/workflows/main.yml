@@ -51,16 +51,35 @@ jobs:
         if: |
           github.ref == 'refs/heads/develop' ||
           startsWith(github.event.head_commit.message, '[BUILD')
-        id: decode_keystore
+        id: decode_keystore_debug
         uses: timheuer/base64-to-file@v1
         with:
           fileName: 'keystore/debug.keystore'
           encodedString: ${{ secrets.ENCODED_KEYSTORE_DEBUG }}
+      # - name: 🔑 Decode Keystore (release)
+      #   if: |
+      #     github.ref == 'refs/heads/develop' ||
+      #     startsWith(github.event.head_commit.message, '[BUILD PROD')
+      #   id: decode_keystore_release
+      #   uses: timheuer/base64-to-file@v1
+      #   with:
+      #     fileName: 'keystore/uploadkey.jks'
+      #     encodedString: ${{ secrets.ENCODED_KEYSTORE_RELEASE }}
 
-      - name: 🤐 Add env
+      - name: 🤐 Add env.dev
+        if : |
+          github.ref == 'refs/heads/develop' ||
+          startsWith(github.event.head_commit.message, '[BUILD DEV')
         env: 
           ENV_DEV : ${{ secrets.ENV_DEV }}
         run: echo $ENV_DEV > .env.dev
+      - name: 🤐 Add env.prod
+        if : |
+            github.ref == 'refs/heads/develop' ||
+            startsWith(github.event.head_commit.message, '[BUILD PROD')
+          env: 
+            ENV_PROD : ${{ secrets.ENV_PROD }}
+          run: echo $ENV_PROD > .env.prod
 
       - name: 🔥 Decode Firebase Service
         env:
@@ -81,30 +100,52 @@ jobs:
       - name: 🚀 Build application (dev:debug)...
         if: |
           github.ref == 'refs/heads/develop' ||
-          startsWith(github.event.head_commit.message, '[BUILD')
+          startsWith(github.event.head_commit.message, '[BUILD DEV')
         env:
-          SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS_DEBUG }}
-          SIGNING_PASSWORD: ${{ secrets.KEY_PASS_DEBUG }}
+          SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
+          SIGNING_PASSWORD_DENUG: ${{ secrets.KEY_PASS_DEBUG }}
         #- run: flutter build appbundle
         run: flutter build apk --flavor dev --debug
+      - name: 🚀 Build application (prod:debug)...
+        if: |
+          github.ref == 'refs/heads/develop' ||
+          startsWith(github.event.head_commit.message, '[BUILD PROD')
+        env:
+          SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
+          SIGNING_PASSWORD_DENUG: ${{ secrets.KEY_PASS_DEBUG }}
+        # env:
+        #   SIGNING_KEY_ALIAS_RELEASE: ${{ secrets.KEY_ALIAS_RELEASE }}
+        #   SIGNING_PASSWORD_RELEASE: ${{ secrets.KEY_PASS_RELEASE }}
+        #- run: flutter build appbundle
+        run: flutter build apk --flavor prod --debug
 
       - name: ☁️ Upload .apk to Firebase App Distribution prod...
         if : |
           github.ref == 'refs/heades/develop' ||
-          startsWith(github.event.head_commit.message, '[BUILD PROD]')
+          startsWith(github.event.head_commit.message, '[BUILD PROD')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
           token: ${{secrets.FIREBASE_CLI_TOKEN}}
-          file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
+          file: build/app/outputs/apk/prod/debug/app-dev-debug.apk
         
       - name: ☁️ Upload .apk to Firebase App Distribution dev...
         if : |
           github.ref == 'refs/heades/develop' ||
-          startsWith(github.event.head_commit.message, '[BUILD DEV]')
+          startsWith(github.event.head_commit.message, '[BUILD DEV')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
           token: ${{secrets.FIREBASE_CLI_TOKEN}}
           file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
+
+      - name: Notify slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1
+        with:
+          channel: poc-flutter-nut-bot-ci
+          status: ✅  SUCCESS DEPLOY 
+          color: good
 

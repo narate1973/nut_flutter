@@ -65,8 +65,8 @@ android {
 
     signingConfigs {
         debug {
-            def alias = System.getenv("SIGNING_KEY_ALIAS")
-            def pass = System.getenv("SIGNING_PASSWORD")
+            def alias = System.getenv("SIGNING_KEY_ALIAS_DEBUG")
+            def pass = System.getenv("SIGNING_PASSWORD_DEBUG")
 
             if(alias != null && pass != null){
                 // Build with git action.
@@ -88,6 +88,19 @@ android {
         }
 
         release {
+            def alias = System.getenv("SIGNING_KEY_ALIAS_RELEASE")
+            def pass = System.getenv("SIGNING_PASSWORD_RELEASE")
+
+            if (alias != null && pass != null) {
+                // Build with git action.
+                def releaseKeyFilePath = System.getProperty("user.home") + "/work/_temp/keystore/uploadkey.jks"
+                def keystoreFile = new File(debugKeyFilePath)
+                storeFile keystoreFile
+                keyAlias alias
+                storePassword pass
+                keyPassword pass
+            }
+
             keyAlias localProperties.getProperty('releaseAlias')
             keyPassword localProperties.getProperty('releaseKeyPass')
             storeFile localProperties.getProperty('releaseKeyStoreFile') ? file(localProperties.getProperty('releaseKeyStoreFile')) : null

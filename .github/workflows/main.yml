@@ -129,7 +129,7 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
           token: ${{secrets.FIREBASE_CLI_TOKEN}}
-          file: build/app/outputs/apk/prod/debug/app-dev-debug.apk
+          file: build/app/outputs/apk/prod/debug/app-prod-debug.apk
         
       - name: ☁️ Upload .apk to Firebase App Distribution dev...
         if : |

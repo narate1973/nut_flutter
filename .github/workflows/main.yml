@@ -14,7 +14,7 @@ jobs:
       github.ref == 'refs/heads/master' ||
       github.ref == 'refs/heads/uat' ||
       github.ref == 'refs/heads/develop' ||
-      startsWith(github.event.head_commit.message, '[BUILD')
+      startsWith(github.event.head_commit.message, '[BUILD]')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -41,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.ref == 'refs/heads/develop' ||
-      startsWith(github.event.head_commit.message, '[BUILD')
+      startsWith(github.event.head_commit.message, '[BUILD]')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -50,7 +50,7 @@ jobs:
       - name: 🔑 Decode Keystore (debug)
         if: |
           github.ref == 'refs/heads/develop' ||
-          startsWith(github.event.head_commit.message, '[BUILD')
+          startsWith(github.event.head_commit.message, '[BUILD]')
         id: decode_keystore
         uses: timheuer/base64-to-file@v1
         with:
@@ -81,34 +81,29 @@ jobs:
       - name: 🚀 Build application (dev:debug)...
         if: |
           github.ref == 'refs/heads/develop' ||
-          startsWith(github.event.head_commit.message, '[BUILD')
+          startsWith(github.event.head_commit.message, '[BUILD]')
         env:
           SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS_DEBUG }}
           SIGNING_PASSWORD: ${{ secrets.KEY_PASS_DEBUG }}
         #- run: flutter build appbundle
         run: flutter build apk --flavor dev --debug
 
-name: "✨ Firebase Distribute"
-jobs:
-  if: |
-    github.ref == 'refs/heades/develop' ||
-    startWith(github.event.head_commit.message, '[BUILD PROD]')
-  steps:
-    - name: ☁️ Upload .apk to Firebase App Distribution prod
-      uses: wzieba/Firebase-Distribution-Github-Action@v1
-      with:
-        appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
-        token: ${{secrets.FIREBASE_CLI_TOKEN}}
-        file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
+      - name: ☁️ Upload .apk to Firebase App Distribution...
+        if : |
+          github.ref == 'refs/heades/develop' ||
+          startWith(github.event.head_commit.message, '[BUILD PROD]')
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
+          token: ${{secrets.FIREBASE_CLI_TOKEN}}
+          file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
+        
+        if : |
+          github.ref == 'refs/heades/develop' ||
+          startWith(github.event.head_commit.message, '[BUILD DEV]')
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
+          token: ${{secrets.FIREBASE_CLI_TOKEN}}
+          file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
 
-  if : |
-    github.ref == 'refs/heades/develop' ||
-    startWith(github.event.head_commit.message, '[BUILD DEV]')
-  steps:
-    - name: ☁️ Upload .apk to Firebase App Distribution dev
-      uses: wzieba/Firebase-Distribution-Github-Action@v1
-      with:
-        appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_PROD}}
-        token: ${{secrets.FIREBASE_CLI_TOKEN}}
-        file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
-   

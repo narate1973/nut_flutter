@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.ref == 'refs/heads/develop' &&
-      startsWith(github.event.head_commit.message, '[BUILD')
+      startsWith(github.event.head_commit.message, '[BUILD ANDROID')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.ref == 'refs/heads/develop' ||
-      startsWith(github.event.head_commit.message, '[BUILD]')
+      startsWith(github.event.head_commit.message, '[BUILD ANDROID')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -48,7 +48,7 @@ jobs:
       - name: 🔑 Decode Keystore (debug)
         if: |
           github.ref == 'refs/heads/develop' ||
-          startsWith(github.event.head_commit.message, '[BUILD')
+          startsWith(github.event.head_commit.message, '[BUILD ANDROID')
         id: decode_keystore_debug
         uses: timheuer/base64-to-file@v1
         with:
@@ -67,7 +67,7 @@ jobs:
       - name: 🤐 Add env.dev
         if : |
           github.ref == 'refs/heads/develop' &&
-          startsWith(github.event.head_commit.message, '[BUILD DEV')
+          startsWith(github.event.head_commit.message, '[BUILD ANDROID DEV')
         env: 
           ENV_DEV : ${{ secrets.ENV_DEV }}
         run: echo $ENV_DEV > .env.dev
@@ -75,7 +75,7 @@ jobs:
       - name: 🤐 Add env.prod
         if : |
             github.ref == 'refs/heads/develop' &&
-            startsWith(github.event.head_commit.message, '[BUILD PROD')
+            startsWith(github.event.head_commit.message, '[BUILD ANDROID PROD')
         env: 
           ENV_PROD : ${{ secrets.ENV_PROD }}
         run: echo $ENV_PROD > .env.prod
@@ -99,7 +99,7 @@ jobs:
       - name: 🚀 Build application (dev:debug)...
         if: |
           github.ref == 'refs/heads/develop' &&
-          startsWith(github.event.head_commit.message, '[BUILD DEV')
+          startsWith(github.event.head_commit.message, '[BUILD ANDROID DEV')
         env:
           SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
           SIGNING_PASSWORD_DEBUG: ${{ secrets.KEY_PASS_DEBUG }}
@@ -109,7 +109,7 @@ jobs:
       - name: 🚀 Build application (prod:debug)...
         if: |
           github.ref == 'refs/heads/develop' &&
-          startsWith(github.event.head_commit.message, '[BUILD PROD')
+          startsWith(github.event.head_commit.message, '[BUILD ANDROID PROD')
         env:
           SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
           SIGNING_PASSWORD_DEBUG: ${{ secrets.KEY_PASS_DEBUG }}
@@ -122,7 +122,7 @@ jobs:
       - name: ☁️ Upload .apk to Firebase App Distribution prod...
         if : |
           github.ref == 'refs/heades/develop' &&
-          startsWith(github.event.head_commit.message, '[BUILD PROD')
+          startsWith(github.event.head_commit.message, '[BUILD ANDROID PROD')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_PROD}}
@@ -132,7 +132,7 @@ jobs:
       - name: ☁️ Upload .apk to Firebase App Distribution dev...
         if : |
           github.ref == 'refs/heades/develop' &&
-          startsWith(github.event.head_commit.message, '[BUILD DEV')
+          startsWith(github.event.head_commit.message, '[BUILD ANDROID DEV')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}

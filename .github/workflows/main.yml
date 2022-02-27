@@ -64,7 +64,7 @@ jobs:
         id: decode_keystore
         uses: timheuer/base64-to-file@v1
         with:
-          fileName: "keystore/debug.keystore"
+          fileName: 'keystore/debug.keystore'
           encodedString: ${{ secrets.ENCODED_KEYSTORE_DEBUG }}
 
       - name: 🤐 Add env

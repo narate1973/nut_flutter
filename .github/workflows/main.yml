@@ -78,9 +78,9 @@ jobs:
         if : |
             github.ref == 'refs/heads/develop' ||
             startsWith(github.event.head_commit.message, '[BUILD PROD')
-          env: 
-            ENV_PROD : ${{ secrets.ENV_PROD }}
-          run: echo $ENV_PROD > .env.prod
+        env: 
+          ENV_PROD : ${{ secrets.ENV_PROD }}
+        run: echo $ENV_PROD > .env.prod
 
       - name: 🔥 Decode Firebase Service
         env:
@@ -107,7 +107,7 @@ jobs:
           SIGNING_PASSWORD_DENUG: ${{ secrets.KEY_PASS_DEBUG }}
         #- run: flutter build appbundle
         run: flutter build apk --flavor dev --debug
-        
+
       - name: 🚀 Build application (prod:debug)...
         if: |
           github.ref == 'refs/heads/develop' ||

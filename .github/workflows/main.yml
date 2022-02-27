@@ -67,6 +67,11 @@ jobs:
           fileName: "keystore/debug.keystore"
           encodedString: ${{ secrets.ENCODED_KEYSTORE_DEBUG }}
 
+      - name: 🤐 Add env
+        env: 
+          ENV_DEV : ${{ secrets.ENV_DEV }}
+        run: echo $ENV_DEV > .env.dev
+
       - name: 🔥 Decode Firebase Service
         env:
           FIREBASE_CONFIG: ${{ secrets.GOOGLE_SERVICES }}
@@ -100,5 +105,5 @@ jobs:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
           token: ${{secrets.FIREBASE_CLI_TOKEN}}
           groups: existing
-          file: build/app/outputs/flutter-apk/app-dev-debug.apk
+          file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
    

@@ -68,7 +68,7 @@ jobs:
 
       - name: 🤐 Add env.dev
         if : |
-          github.ref == 'refs/heads/develop' ||
+          github.ref == 'refs/heads/develop' &&
           startsWith(github.event.head_commit.message, '[BUILD DEV')
         env: 
           ENV_DEV : ${{ secrets.ENV_DEV }}
@@ -76,7 +76,7 @@ jobs:
 
       - name: 🤐 Add env.prod
         if : |
-            github.ref == 'refs/heads/develop' ||
+            github.ref == 'refs/heads/develop' &&
             startsWith(github.event.head_commit.message, '[BUILD PROD')
         env: 
           ENV_PROD : ${{ secrets.ENV_PROD }}
@@ -100,7 +100,7 @@ jobs:
 
       - name: 🚀 Build application (dev:debug)...
         if: |
-          github.ref == 'refs/heads/develop' ||
+          github.ref == 'refs/heads/develop' &&
           startsWith(github.event.head_commit.message, '[BUILD DEV')
         env:
           SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
@@ -110,7 +110,7 @@ jobs:
 
       - name: 🚀 Build application (prod:debug)...
         if: |
-          github.ref == 'refs/heads/develop' ||
+          github.ref == 'refs/heads/develop' &&
           startsWith(github.event.head_commit.message, '[BUILD PROD')
         env:
           SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
@@ -123,7 +123,7 @@ jobs:
 
       - name: ☁️ Upload .apk to Firebase App Distribution prod...
         if : |
-          github.ref == 'refs/heades/develop' ||
+          github.ref == 'refs/heades/develop' &&
           startsWith(github.event.head_commit.message, '[BUILD PROD')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
@@ -133,7 +133,7 @@ jobs:
         
       - name: ☁️ Upload .apk to Firebase App Distribution dev...
         if : |
-          github.ref == 'refs/heades/develop' ||
+          github.ref == 'refs/heades/develop' &&
           startsWith(github.event.head_commit.message, '[BUILD DEV')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:

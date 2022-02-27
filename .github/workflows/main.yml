@@ -11,9 +11,7 @@ jobs:
     name: 💪🏻 Run flutter test and analyze
     runs-on: ubuntu-latest
     if: |
-      github.ref == 'refs/heads/master' ||
-      github.ref == 'refs/heads/uat' ||
-      github.ref == 'refs/heads/develop' ||
+      github.ref == 'refs/heads/develop' &&
       startsWith(github.event.head_commit.message, '[BUILD')
     steps:
       - name: Checkout repository

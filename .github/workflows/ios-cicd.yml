@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+name: "🍎  Build and distribute flutter app to testflight"
+
+jobs:
+  flutter_test:
+    name: 💪🏻  Run flutter test and analyze
+    

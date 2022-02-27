@@ -3,9 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>278763047719-jrf1rv88184vell7190gjpk6q9p8nd8u.apps.googleusercontent.com</string>
+	<string>278763047719-egvd7vocm41nkbifnkhiqkps92el9nfa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.278763047719-jrf1rv88184vell7190gjpk6q9p8nd8u</string>
+	<string>com.googleusercontent.apps.278763047719-egvd7vocm41nkbifnkhiqkps92el9nfa</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>278763047719-j975on5p48i05nq3ju9ga0mckv3rq4d6.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD__EyNHmMgA8q6TRDQVwYTcnSK9yoohiI</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.nutFlutter</string>
+	<string>com.example.nutflutter</string>
 	<key>PROJECT_ID</key>
 	<string>poc-project-341403</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:278763047719:ios:4ddb467c42b44e37627702</string>
+	<string>1:278763047719:ios:89589cd7bb8740b4627702</string>
+	<key>DATABASE_URL</key>
+	<string>https://poc-project-341403-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
 </plist>

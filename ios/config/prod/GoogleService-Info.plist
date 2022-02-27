@@ -3,21 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>19105349592-7kivm1h8l8dv99fcn2gpko3pn795en1h.apps.googleusercontent.com</string>
+	<string>278763047719-egvd7vocm41nkbifnkhiqkps92el9nfa.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.19105349592-7kivm1h8l8dv99fcn2gpko3pn795en1h</string>
+	<string>com.googleusercontent.apps.278763047719-egvd7vocm41nkbifnkhiqkps92el9nfa</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>278763047719-j975on5p48i05nq3ju9ga0mckv3rq4d6.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCUvb9lbPs5fEflYb_2SZmTA0bks5FQTTo</string>
+	<string>AIzaSyD__EyNHmMgA8q6TRDQVwYTcnSK9yoohiI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>19105349592</string>
+	<string>278763047719</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.nutFlutter.prod</string>
+	<string>com.example.nutflutter</string>
 	<key>PROJECT_ID</key>
-	<string>nutgcp</string>
+	<string>poc-project-341403</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nutgcp.appspot.com</string>
+	<string>poc-project-341403.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +31,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:19105349592:ios:d563daab796bf9cae2bcad</string>
+	<string>1:278763047719:ios:89589cd7bb8740b4627702</string>
+	<key>DATABASE_URL</key>
+	<string>https://poc-project-341403-default-rtdb.asia-southeast1.firebasedatabase.app</string>
 </dict>
 </plist>

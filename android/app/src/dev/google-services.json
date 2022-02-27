@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "278763047719",
+    "firebase_url": "https://poc-project-341403-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "poc-project-341403",
     "storage_bucket": "poc-project-341403.appspot.com"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "278763047719-j975on5p48i05nq3ju9ga0mckv3rq4d6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nut_flutter",
+            "certificate_hash": "00d2313597be2b6d7a58c1d58146693470ad2201"
+          }
+        },
+        {
+          "client_id": "278763047719-r2r42rjuash0e9741r5ucrvc025tfrie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nut_flutter",
+            "certificate_hash": "db24a0f8ce7d56f380eca3de5c3b1d1e35174c08"
+          }
+        },
         {
           "client_id": "278763047719-dkdvsq1lrafjru1us3d69v7kuicj0isf.apps.googleusercontent.com",
           "client_type": 3
@@ -29,6 +46,13 @@
             {
               "client_id": "278763047719-dkdvsq1lrafjru1us3d69v7kuicj0isf.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "278763047719-egvd7vocm41nkbifnkhiqkps92el9nfa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.nutflutter"
+              }
             }
           ]
         }

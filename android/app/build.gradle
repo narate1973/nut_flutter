@@ -6,14 +6,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-// def keystoreProperties = new Properties()
-// def keystorePropertiesFile = rootProject.file('key.properties')
-// if (keystorePropertiesFile.exists()) {
-//     keystorePropertiesFile.withReader('UTF-8') { reader ->
-//         keystoreProperties.load(reader)
-//     }
-// }
-
 def flutterRoot = localProperties.getProperty('flutter.sdk')
 if (flutterRoot == null) {
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
@@ -33,6 +25,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+
 project.ext.envConfigFiles = [
         dev : ".env.dev",
         prod: ".env.prod"
@@ -42,6 +35,10 @@ apply from: project(':flutter_config').projectDir.getPath() + "/dotenv.gradle"
 
 android {
     compileSdkVersion 31
+
+    lintOptions {
+         checkReleaseBuilds false
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -63,23 +60,24 @@ android {
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        resValue "string", "build_config_package", "com.example.nut_flutter"
     }
 
-    // signingConfig {
-    //     debug {
-    //         keyAlias keystoreProperties['debugAlias']
-    //         keyPassword keystoreProperties['debugKeyPass']
-    //         storeFile keystoreProperties['debugKeyStoreFile'] ? file(keystoreProperties['debugKeyStoreFile']) : null
-    //         storePassword keystoreProperties['debugStorePass']
-    //     }
+    signingConfigs {
+        debug {
+            keyAlias localProperties.getProperty('debugAlias')
+            keyPassword localProperties.getProperty('debugKeyPass')
+            storeFile localProperties.getProperty('debugKeyStoreFile') ? file(localProperties.getProperty('debugKeyStoreFile')) : null
+            storePassword localProperties.getProperty('debugStorePass')
+        }
 
-    //     release {
-    //         keyAlias keystoreProperties['releaseAlias']
-    //         keyPassword keystoreProperties['releaseKeyPass']
-    //         storeFile keystoreProperties['releaseKeyStoreFile'] ? file(keystoreProperties['releaseKeyStoreFile']) : null
-    //         storePassword keystoreProperties['releaseStorePass']
-    //     }
-    // }
+        release {
+            keyAlias localProperties.getProperty('releaseAlias')
+            keyPassword localProperties.getProperty('releaseKeyPass')
+            storeFile localProperties.getProperty('releaseKeyStoreFile') ? file(localProperties.getProperty('releaseKeyStoreFile')) : null
+            storePassword localProperties.getProperty('releaseStorePass')
+        }
+    }
 
     buildTypes {
         debug {
@@ -88,7 +86,7 @@ android {
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 

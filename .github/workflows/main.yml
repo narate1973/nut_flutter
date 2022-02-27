@@ -104,7 +104,7 @@ jobs:
           startsWith(github.event.head_commit.message, '[BUILD DEV')
         env:
           SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
-          SIGNING_PASSWORD_DENUG: ${{ secrets.KEY_PASS_DEBUG }}
+          SIGNING_PASSWORD_DEBUG: ${{ secrets.KEY_PASS_DEBUG }}
         #- run: flutter build appbundle
         run: flutter build apk --flavor dev --debug
 
@@ -114,7 +114,7 @@ jobs:
           startsWith(github.event.head_commit.message, '[BUILD PROD')
         env:
           SIGNING_KEY_ALIAS_DEBUG: ${{ secrets.KEY_ALIAS_DEBUG }}
-          SIGNING_PASSWORD_DENUG: ${{ secrets.KEY_PASS_DEBUG }}
+          SIGNING_PASSWORD_DEBUG: ${{ secrets.KEY_PASS_DEBUG }}
         # env:
         #   SIGNING_KEY_ALIAS_RELEASE: ${{ secrets.KEY_ALIAS_RELEASE }}
         #   SIGNING_PASSWORD_RELEASE: ${{ secrets.KEY_PASS_RELEASE }}

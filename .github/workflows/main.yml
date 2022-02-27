@@ -91,7 +91,7 @@ jobs:
       - name: ☁️ Upload .apk to Firebase App Distribution prod...
         if : |
           github.ref == 'refs/heades/develop' ||
-          startWith(github.event.head_commit.message, '[BUILD PROD]')
+          startsWith(github.event.head_commit.message, '[BUILD PROD]')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
@@ -101,7 +101,7 @@ jobs:
       - name: ☁️ Upload .apk to Firebase App Distribution dev...
         if : |
           github.ref == 'refs/heades/develop' ||
-          startWith(github.event.head_commit.message, '[BUILD DEV]')
+          startsWith(github.event.head_commit.message, '[BUILD DEV]')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
           appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}

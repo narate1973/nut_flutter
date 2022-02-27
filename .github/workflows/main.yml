@@ -73,6 +73,7 @@ jobs:
         env: 
           ENV_DEV : ${{ secrets.ENV_DEV }}
         run: echo $ENV_DEV > .env.dev
+
       - name: 🤐 Add env.prod
         if : |
             github.ref == 'refs/heads/develop' ||
@@ -106,6 +107,7 @@ jobs:
           SIGNING_PASSWORD_DENUG: ${{ secrets.KEY_PASS_DEBUG }}
         #- run: flutter build appbundle
         run: flutter build apk --flavor dev --debug
+        
       - name: 🚀 Build application (prod:debug)...
         if: |
           github.ref == 'refs/heads/develop' ||

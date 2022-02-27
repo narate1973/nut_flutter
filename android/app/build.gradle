@@ -70,9 +70,8 @@ android {
 
             if(alias != null && pass != null){
                 // Build with git action.
-                def tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
-                def allFilesFromDir = new File(tmpFilePath).listFiles()
-                def keystoreFile = allFilesFromDir.first()
+                def debugKeyFilePath = System.getProperty("user.home") + "/work/_temp/keystore/debug.keystore"
+                def keystoreFile = new File(debugKeyFilePath)
                 storeFile keystoreFile
                 keyAlias alias
                 storePassword pass

@@ -88,11 +88,27 @@ jobs:
         #- run: flutter build appbundle
         run: flutter build apk --flavor dev --debug
 
-      - name: ☁️ Upload .apk to Firebase App Distribution...
-        uses: wzieba/Firebase-Distribution-Github-Action@v1
-        with:
-          appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
-          token: ${{secrets.FIREBASE_CLI_TOKEN}}
-          groups: existing
-          file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
+name: "✨ Firebase Distribute"
+jobs:
+  if: |
+    github.ref == 'refs/heades/develop' ||
+    startWith(github.event.head_commit.message, '[BUILD PROD]')
+  steps:
+    - name: ☁️ Upload .apk to Firebase App Distribution prod
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      with:
+        appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
+        token: ${{secrets.FIREBASE_CLI_TOKEN}}
+        file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
+
+  if : |
+    github.ref == 'refs/heades/develop' ||
+    startWith(github.event.head_commit.message, '[BUILD DEV]')
+  steps:
+    - name: ☁️ Upload .apk to Firebase App Distribution dev
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      with:
+        appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_PROD}}
+        token: ${{secrets.FIREBASE_CLI_TOKEN}}
+        file: build/app/outputs/apk/dev/debug/app-dev-debug.apk
    

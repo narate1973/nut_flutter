@@ -65,10 +65,26 @@ android {
 
     signingConfigs {
         debug {
-            keyAlias localProperties.getProperty('debugAlias')
-            keyPassword localProperties.getProperty('debugKeyPass')
-            storeFile localProperties.getProperty('debugKeyStoreFile') ? file(localProperties.getProperty('debugKeyStoreFile')) : null
-            storePassword localProperties.getProperty('debugStorePass')
+            def alias = System.getenv("SIGNING_KEY_ALIAS")
+            def pass = System.getenv("SIGNING_PASSWORD")
+
+            if(alias != null && pass != null){
+                // Build with git action.
+                def tmpFilePath = System.getProperty("user.home") + "/work/_temp/keystore/"
+                def allFilesFromDir = new File(tmpFilePath).listFiles()
+                def keystoreFile = allFilesFromDir.first()
+                storeFile keystoreFile
+                keyAlias alias
+                storePassword pass
+                keyPassword pass
+            }else{
+
+                keyAlias localProperties.getProperty('debugAlias')
+                keyPassword localProperties.getProperty('debugKeyPass')
+                storeFile localProperties.getProperty('debugKeyStoreFile') ? file(localProperties.getProperty('debugKeyStoreFile')) : null
+                storePassword localProperties.getProperty('debugStorePass')
+            
+            }
         }
 
         release {

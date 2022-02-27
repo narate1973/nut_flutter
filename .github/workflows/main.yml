@@ -127,7 +127,7 @@ jobs:
           startsWith(github.event.head_commit.message, '[BUILD PROD')
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         with:
-          appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_DEV}}
+          appId: ${{secrets.FIREBASE_DISTRIBUTE_APP_ID_PROD}}
           token: ${{secrets.FIREBASE_CLI_TOKEN}}
           file: build/app/outputs/apk/prod/debug/app-prod-debug.apk
         

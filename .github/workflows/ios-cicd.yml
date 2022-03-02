@@ -1,60 +1,60 @@
-name: CD
-on:
-  push:
-    branches:
-      - main
-      - develop
+# name: CD
+# on:
+#   push:
+#     branches:
+#       - main
+#       - develop
 
-  # Allows you to run this workflow manually from the Actions a tab
-  workflow_dispatch:
+#   # Allows you to run this workflow manually from the Actions a tab
+#   workflow_dispatch:
 
-jobs:
+# jobs:
   
-  deploy:
-    name: Deploying to Testflight
-    if : |
-      github.ref == 'refs/heads/develop' &&
-      startsWith(github.event.head_commit.message, '[BUIL IOS')
-    runs-on: macOS-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Checkout submodules
-        run: git submodule update --init --recursive
-      - name: 🤐 Add env.dev
-        if : |
-          github.ref == 'refs/heads/develop' &&
-          startsWith(github.event.head_commit.message, '[BUILD IOS DEV')
-        env: 
-          ENV_DEV : ${{ secrets.ENV_DEV }}
-        run: echo $ENV_DEV > .env.dev
+#   deploy:
+#     name: Deploying to Testflight
+#     if : |
+#       github.ref == 'refs/heads/develop' &&
+#       startsWith(github.event.head_commit.message, '[BUIL IOS')
+#     runs-on: macOS-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
+#       - name: Checkout submodules
+#         run: git submodule update --init --recursive
+#       - name: 🤐 Add env.dev
+#         if : |
+#           github.ref == 'refs/heads/develop' &&
+#           startsWith(github.event.head_commit.message, '[BUILD IOS DEV')
+#         env: 
+#           ENV_DEV : ${{ secrets.ENV_DEV }}
+#         run: echo $ENV_DEV > .env.dev
 
-      - name: 🤐 Add env.prod
-        if : |
-            github.ref == 'refs/heads/develop' &&
-            startsWith(github.event.head_commit.message, '[BUILD IOS PROD')
-        env: 
-          ENV_PROD : ${{ secrets.ENV_PROD }}
-        run: echo $ENV_PROD > .env.prod
+#       - name: 🤐 Add env.prod
+#         if : |
+#             github.ref == 'refs/heads/develop' &&
+#             startsWith(github.event.head_commit.message, '[BUILD IOS PROD')
+#         env: 
+#           ENV_PROD : ${{ secrets.ENV_PROD }}
+#         run: echo $ENV_PROD > .env.prod
 
 
 
-      - name: Deploy iOS Beta to TestFlight via Fastlane
-        uses: maierj/fastlane-action@v1.4.0
-        with:
-          lane: closed_beta
-        env:
-          APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
-          DEVELOPER_APP_ID: '${{ secrets.DEVELOPER_APP_ID }}'
-          DEVELOPER_APP_IDENTIFIER: '${{ secrets.DEVELOPER_APP_IDENTIFIER }}'
-          DEVELOPER_PORTAL_TEAM_ID: '${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}'
-          FASTLANE_APPLE_ID: '${{ secrets.FASTLANE_APPLE_ID }}'
-          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: '${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}'
-          MATCH_PASSWORD: '${{ secrets.MATCH_PASSWORD }}'
-          GIT_AUTHORIZATION: '${{ secrets.GIT_AUTHORIZATION }}'
-          PROVISIONING_PROFILE_SPECIFIER: '${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}'
-          TEMP_KEYCHAIN_PASSWORD: '${{ secrets.TEMP_KEYCHAIN_PASSWORD }}'
-          TEMP_KEYCHAIN_USER: '${{ secrets.TEMP_KEYCHAIN_USER }}'
-          APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
-          APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
-          APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'
+#       - name: Deploy iOS Beta to TestFlight via Fastlane
+#         uses: maierj/fastlane-action@v1.4.0
+#         with:
+#           lane: closed_beta
+#         env:
+#           APP_STORE_CONNECT_TEAM_ID: '${{ secrets.APP_STORE_CONNECT_TEAM_ID }}'
+#           DEVELOPER_APP_ID: '${{ secrets.DEVELOPER_APP_ID }}'
+#           DEVELOPER_APP_IDENTIFIER: '${{ secrets.DEVELOPER_APP_IDENTIFIER }}'
+#           DEVELOPER_PORTAL_TEAM_ID: '${{ secrets.DEVELOPER_PORTAL_TEAM_ID }}'
+#           FASTLANE_APPLE_ID: '${{ secrets.FASTLANE_APPLE_ID }}'
+#           FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: '${{ secrets.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}'
+#           MATCH_PASSWORD: '${{ secrets.MATCH_PASSWORD }}'
+#           GIT_AUTHORIZATION: '${{ secrets.GIT_AUTHORIZATION }}'
+#           PROVISIONING_PROFILE_SPECIFIER: '${{ secrets.PROVISIONING_PROFILE_SPECIFIER }}'
+#           TEMP_KEYCHAIN_PASSWORD: '${{ secrets.TEMP_KEYCHAIN_PASSWORD }}'
+#           TEMP_KEYCHAIN_USER: '${{ secrets.TEMP_KEYCHAIN_USER }}'
+#           APPLE_KEY_ID: '${{ secrets.APPLE_KEY_ID }}'
+#           APPLE_ISSUER_ID: '${{ secrets.APPLE_ISSUER_ID }}'
+#           APPLE_KEY_CONTENT: '${{ secrets.APPLE_KEY_CONTENT }}'

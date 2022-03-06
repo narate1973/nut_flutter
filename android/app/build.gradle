@@ -25,7 +25,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
-
 project.ext.envConfigFiles = [
         dev : ".env.dev",
         prod: ".env.prod"
@@ -60,7 +59,9 @@ android {
         targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        //  this is defined for flutter config 
         resValue "string", "build_config_package", "com.example.nut_flutter"
+        multiDexEnabled true
     }
 
     signingConfigs {
@@ -143,6 +144,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:29.0.4')
     implementation 'com.google.firebase:firebase-analytics'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
 
 }
 

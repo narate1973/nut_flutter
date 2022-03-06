@@ -1,4 +1,4 @@
-Feature: Login 
+Feature: Authentication 
 
     Scenario: Login with incorrect account
 
@@ -25,3 +25,11 @@ Feature: Login
         When I tap the "login-page-login-button"
         
         Then I should see "home-navigation-page" appeared
+
+    Scenario: Signed-in user want to sign out
+    
+        Given "home-navigation-page" appeared
+        Then I open the drawer
+        When I tap the "sign-out-button"
+
+        Then I should see "login-page" appeared

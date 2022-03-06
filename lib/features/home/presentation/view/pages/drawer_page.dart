@@ -40,6 +40,7 @@ class DrawerPage extends StatelessWidget {
               },
             ),
             ListTile(
+              key: const Key('sign-out-button'),
               title: const Text('sign out'),
               onTap: () {
                 authCubit.signOut();

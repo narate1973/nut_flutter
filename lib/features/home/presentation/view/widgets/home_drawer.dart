@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
-import 'package:provider/src/provider.dart';
 
-class DrawerPage extends StatelessWidget {
-  const DrawerPage._({Key? key}) : super(key: key);
-
-  static Widget create() => const DrawerPage._();
+class HomeDrawer extends StatelessWidget {
+  const HomeDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

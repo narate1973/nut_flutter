@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nut_flutter/features/home/presentation/bloc/home_navigation_cubit/home_navigation_cubit.dart';
-import 'package:nut_flutter/features/home/presentation/view/pages/drawer_page.dart';
+import 'package:nut_flutter/features/home/presentation/view/widgets/atoms/home_bottom_nav_item.dart';
+import 'package:nut_flutter/features/home/presentation/view/widgets/home_drawer.dart';
 
 import 'bottom_pages/bottom_pages.dart';
 
@@ -27,28 +28,19 @@ class HomeNavigationPage extends StatelessWidget {
     return BlocBuilder<HomeNavigationCubit, HomeNavigationState>(
       builder: (context, state) {
         return Scaffold(
-          drawer: DrawerPage.create(),
+          drawer: const HomeDrawer(),
           appBar: AppBar(
             title: const Text('Home'),
             centerTitle: true,
           ),
-          body: screen[cubit.state.navIndex],
+          body: screen[state.navIndex],
           bottomNavigationBar: BottomNavigationBar(
-            currentIndex: cubit.state.navIndex,
+            currentIndex: state.navIndex,
             onTap: (int index) => cubit.onNavTaped(index),
             items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'หน้าหลัก',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.account_balance_rounded),
-                label: 'ตรวจจุด',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.notification_add_outlined),
-                label: 'แจ้งเตือน',
-              ),
+              HomeBottomNavItem.home,
+              HomeBottomNavItem.patrol,
+              HomeBottomNavItem.notification,
             ],
           ),
         );

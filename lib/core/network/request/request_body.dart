@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:nut_flutter/core/network/request/base_request.dart';
+import 'base_request.dart';
 
 abstract class RequestBody extends BaseRequest {
   const RequestBody();

@@ -1,4 +1,4 @@
-import 'package:nut_flutter/core/network/request/response_data.dart';
+import '../../../../../../core/network/request/response_data.dart';
 
 class TestResponse extends ResponseData {
   final String message;

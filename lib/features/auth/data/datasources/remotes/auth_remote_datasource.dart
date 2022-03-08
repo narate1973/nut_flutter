@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nut_flutter/core/exceptions/firebase_login_exception.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/auth_api_service.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/firebase_service.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/requests/login_request.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/responses/test_response.dart';
+import '../../../../../core/exceptions/firebase_login_exception.dart';
+import 'auth_api_service.dart';
+import 'firebase_service.dart';
+import 'requests/login_request.dart';
+import 'responses/test_response.dart';
 
 abstract class AuthRemoteDatasource {
   Future<TestResponse> test();

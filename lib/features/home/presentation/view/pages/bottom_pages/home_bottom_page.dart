@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nut_flutter/features/home/presentation/view/pages/tab_bar_pages/conserve_page.dart';
-import 'package:nut_flutter/features/home/presentation/view/pages/tab_bar_pages/my_work_page.dart';
+import '../tab_bar_pages/conserve_page.dart';
+import '../tab_bar_pages/my_work_page.dart';
 
 class HomeBottomPage extends StatefulWidget {
   const HomeBottomPage._({Key? key}) : super(key: key);

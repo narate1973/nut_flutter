@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
-import 'package:nut_flutter/core/failure/failure.dart';
+import '../../../../core/failure/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:nut_flutter/core/usecase/usecase.dart';
+import '../../../../core/usecase/usecase.dart';
 
 import '../repository/auth_repo.dart';
 

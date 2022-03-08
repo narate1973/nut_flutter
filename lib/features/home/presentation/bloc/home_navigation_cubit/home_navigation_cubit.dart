@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'dart:developer' as developer;
 
-import 'package:nut_flutter/features/auth/domain/repository/auth_repo.dart';
+import '../../../../auth/domain/repository/auth_repo.dart';
 
 part 'home_navigation_state.dart';
 

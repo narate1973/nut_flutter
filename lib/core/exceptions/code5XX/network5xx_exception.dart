@@ -1,4 +1,4 @@
-import 'package:nut_flutter/core/exceptions/network_exception.dart';
+import '../network_exception.dart';
 
 class Network5XXException extends NetworkException {
   const Network5XXException({

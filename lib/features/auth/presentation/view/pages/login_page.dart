@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:nut_flutter/core/core.dart';
-import 'package:nut_flutter/features/auth/presentation/bloc/login_cubit/login_cubit.dart';
-import 'package:nut_flutter/features/auth/presentation/view/widgets/templates/login_template.dart';
+import '../../../../../core/core.dart';
+import '../../bloc/login_cubit/login_cubit.dart';
+import '../widgets/templates/login_template.dart';
 
 import '../../bloc/auth_cubit/auth_cubit.dart';
 

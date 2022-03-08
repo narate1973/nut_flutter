@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:nut_flutter/features/app/bloc/app_cubit/app_cubit.dart';
+import '../../../../app/bloc/app_cubit/app_cubit.dart';
 
-import 'package:nut_flutter/features/auth/domain/usecase/login.dart';
+import '../../../domain/usecase/login.dart';
 
 part 'login_state.dart';
 

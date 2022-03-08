@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:nut_flutter/core/network/app_api_service.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/responses/login_or_register_response.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/responses/refresh_token_response.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/responses/test_response.dart';
+import '../../../../../core/network/app_api_service.dart';
+import 'responses/login_or_register_response.dart';
+import 'responses/refresh_token_response.dart';
+import 'responses/test_response.dart';
 
 abstract class LoginApiService {
   Future<Response<TestResponse>> test();

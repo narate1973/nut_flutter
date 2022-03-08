@@ -1,5 +1,5 @@
-import 'package:nut_flutter/core/app_secure_storage/models/auth_token_model.dart';
-import 'package:nut_flutter/core/app_secure_storage/token_local_database.dart';
+import '../../../../../core/app_secure_storage/models/auth_token_model.dart';
+import '../../../../../core/app_secure_storage/token_local_database.dart';
 
 abstract class AuthLocalDatasource {
   Future<void> cachedToken(String token);

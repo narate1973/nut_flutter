@@ -1,4 +1,5 @@
 import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 
 class NLog {
@@ -8,10 +9,8 @@ class NLog {
   static const String BOTTOM_LEFT_CORNER = '└';
   static const String MIDDLE_CORNER = '├';
   static const String HORIZONTAL_LINE = '│';
-  static const String DOUBLE_DIVIDER =
-      '────────────────────────────────────────────────────────';
-  static const String SINGLE_DIVIDER =
-      '┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄';
+  static const String DOUBLE_DIVIDER = '────────────────────────────────────────────────────────';
+  static const String SINGLE_DIVIDER = '┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄';
 
   static void i(String tag, String message) {
     if (_isDebug) {
@@ -24,11 +23,7 @@ class NLog {
   static void e(String tag, String serviceName, Object exception) {
     if (_isDebug) {
       log(tag + ' | ' + TOP_LEFT_CORNER + DOUBLE_DIVIDER);
-      log(tag +
-          ' | ' +
-          HORIZONTAL_LINE +
-          ' Throwable: ' +
-          exception.runtimeType.toString());
+      log(tag + ' | ' + HORIZONTAL_LINE + ' Throwable: ' + exception.runtimeType.toString());
       log(tag + ' | ' + HORIZONTAL_LINE + ' Message: ' + exception.toString());
       log(tag + ' | ' + MIDDLE_CORNER + SINGLE_DIVIDER);
       log(tag + ' | ' + HORIZONTAL_LINE + ' Service: ' + serviceName);

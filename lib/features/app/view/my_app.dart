@@ -2,13 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_config/flutter_config.dart';
-import 'package:nut_flutter/core/core.dart';
-import 'package:nut_flutter/core/network/app_api_service.dart';
-import 'package:nut_flutter/features/home/presentation/view/pages/home_navigation_page.dart';
-import 'package:nut_flutter/features/auth/presentation/view/pages/login_page.dart';
-import 'package:nut_flutter/features/app/view/app_splash_screen.dart';
-import 'package:nut_flutter/features/app/view/overlay_layout.dart';
-import 'package:nut_flutter/injection/injection.dart' as di;
+import '../../../core/core.dart';
+import '../../../core/network/app_api_service.dart';
+import '../../home/presentation/view/pages/home_navigation_page.dart';
+import '../../auth/presentation/view/pages/login_page.dart';
+import 'app_splash_screen.dart';
+import 'overlay_layout.dart';
+import '../../../injection/injection.dart' as di;
 
 import '../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 

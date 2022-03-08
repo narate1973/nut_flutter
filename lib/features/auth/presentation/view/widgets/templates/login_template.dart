@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nut_flutter/features/auth/presentation/view/widgets/organisms/login_form.dart';
+import '../organisms/login_form.dart';
 
 class LoginTemplate extends StatelessWidget {
   const LoginTemplate({Key? key}) : super(key: key);

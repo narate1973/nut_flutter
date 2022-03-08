@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:nut_flutter/core/usecase/usecase.dart';
+import '../../../../../core/usecase/usecase.dart';
 
-import 'package:nut_flutter/features/app/bloc/app_cubit/app_cubit.dart';
-import 'package:nut_flutter/features/auth/domain/usecase/check_auth.dart';
-import 'package:nut_flutter/features/auth/domain/usecase/sigin_out.dart';
+import '../../../../app/bloc/app_cubit/app_cubit.dart';
+import '../../../domain/usecase/check_auth.dart';
+import '../../../domain/usecase/sigin_out.dart';
 
 part 'auth_state.dart';
 

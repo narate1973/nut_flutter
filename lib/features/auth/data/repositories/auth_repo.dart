@@ -1,10 +1,10 @@
-import 'package:nut_flutter/core/exceptions/firebase_login_exception.dart';
-import 'package:nut_flutter/core/failure/failure.dart';
+import '../../../../core/exceptions/firebase_login_exception.dart';
+import '../../../../core/failure/failure.dart';
 import 'package:dartz/dartz.dart';
-import 'package:nut_flutter/core/failure/login_failure.dart';
-import 'package:nut_flutter/core/network/app_api_service.dart';
-import 'package:nut_flutter/features/auth/data/datasources/locals/auth_local_datasource.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/auth_remote_datasource.dart';
+import '../../../../core/failure/login_failure.dart';
+import '../../../../core/network/app_api_service.dart';
+import '../datasources/locals/auth_local_datasource.dart';
+import '../datasources/remotes/auth_remote_datasource.dart';
 
 import '../../domain/repository/auth_repo.dart';
 

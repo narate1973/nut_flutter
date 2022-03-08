@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:ansicolor/ansicolor.dart';
 import 'package:logger/logger.dart';
-import 'package:nut_flutter/core/configs/build_config.dart';
+import '../configs/build_config.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 class Log {

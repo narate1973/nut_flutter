@@ -1,4 +1,4 @@
-import 'package:nut_flutter/core/network/request/request_body.dart';
+import '../../../../../../core/network/request/request_body.dart';
 
 class LoginOrRegisterBody extends RequestBody {
   final String refreshToken;

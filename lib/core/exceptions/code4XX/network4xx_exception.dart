@@ -1,4 +1,4 @@
-import 'package:nut_flutter/core/exceptions/network_exception.dart';
+import '../network_exception.dart';
 
 class Network4XXException extends NetworkException {
   const Network4XXException({required String service, required int code, String? message})

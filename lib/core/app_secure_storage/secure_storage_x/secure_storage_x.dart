@@ -1,5 +1,6 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:nut_flutter/core/utils/logger.dart';
+
+import '../../utils/logger.dart';
 
 /// Singleton
 class SecureStorageX {

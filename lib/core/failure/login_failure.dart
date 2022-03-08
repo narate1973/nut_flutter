@@ -1,4 +1,4 @@
-import 'package:nut_flutter/core/failure/failure.dart';
+import 'failure.dart';
 
 class LoginNoTokenFailure extends Failure {
   @override

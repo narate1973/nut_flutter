@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:nut_flutter/core/app_secure_storage/secure_storage_x/secure_storage_x.dart';
+import 'secure_storage_x/secure_storage_x.dart';
 
 abstract class AppSecureLocalDatabase {
   final SecureStorageX _secureStorage;

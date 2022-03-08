@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:nut_flutter/core/network/request/response_data.dart';
+import '../../../../../../core/network/request/response_data.dart';
 
 class RefreshTokenResponse extends ResponseData {
   final String accessToken;

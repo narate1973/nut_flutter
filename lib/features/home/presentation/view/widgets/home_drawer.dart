@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nut_flutter/features/home/presentation/bloc/home_navigation_cubit/home_navigation_cubit.dart';
+import '../../bloc/home_navigation_cubit/home_navigation_cubit.dart';
 import '../../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 
 class HomeDrawer extends StatelessWidget {

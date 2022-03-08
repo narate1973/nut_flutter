@@ -1,6 +1,6 @@
-import 'package:nut_flutter/core/app_secure_storage/app_secure_storage.dart';
-import 'package:nut_flutter/core/app_secure_storage/models/auth_token_model.dart';
-import 'package:nut_flutter/core/utils/logger.dart';
+import 'app_secure_storage.dart';
+import 'models/auth_token_model.dart';
+import '../utils/logger.dart';
 
 abstract class TokenDatabase {
   Future<TokenModel> loadToken();

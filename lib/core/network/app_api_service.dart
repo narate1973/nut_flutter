@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:nut_flutter/core/extensions/response_extensions.dart';
-import 'package:nut_flutter/core/network/interceptors/access_token_interceptor.dart';
-import 'package:nut_flutter/core/network/interceptors/error_handler_interceptor.dart';
-import 'package:nut_flutter/core/network/interceptors/log_interceptor.dart';
-import 'package:nut_flutter/core/network/request/request_body.dart';
+import '../extensions/response_extensions.dart';
+import 'interceptors/access_token_interceptor.dart';
+import 'interceptors/error_handler_interceptor.dart';
+import 'interceptors/log_interceptor.dart';
+import 'request/request_body.dart';
 
 abstract class AppApiService {
   static final Dio _dio = Dio();

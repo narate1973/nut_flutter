@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:nut_flutter/features/home/presentation/bloc/home_navigation_cubit/home_navigation_cubit.dart';
-import 'package:nut_flutter/features/home/presentation/view/widgets/atoms/home_bottom_nav_item.dart';
-import 'package:nut_flutter/features/home/presentation/view/widgets/home_drawer.dart';
+import '../../bloc/home_navigation_cubit/home_navigation_cubit.dart';
+import '../widgets/atoms/home_bottom_nav_item.dart';
+import '../widgets/home_drawer.dart';
 
 import 'bottom_pages/bottom_pages.dart';
 

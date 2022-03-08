@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:nut_flutter/core/exceptions/code4XX/bad_request.dart';
-import 'package:nut_flutter/core/exceptions/code4XX/server_not_found.dart';
-import 'package:nut_flutter/core/exceptions/code4XX/timeout.dart';
-import 'package:nut_flutter/core/exceptions/code5XX/internal_error_exception.dart';
+import '../../exceptions/code4XX/bad_request.dart';
+import '../../exceptions/code4XX/server_not_found.dart';
+import '../../exceptions/code4XX/timeout.dart';
+import '../../exceptions/code5XX/internal_error_exception.dart';
 import 'package:stack_trace/stack_trace.dart';
 
 class NetworkErrorHandlerInterceptor extends InterceptorsWrapper {

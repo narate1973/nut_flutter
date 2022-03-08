@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:nut_flutter/features/auth/data/datasources/remotes/requests/login_request.dart';
+import 'requests/login_request.dart';
 
 abstract class FirebaseService {
   Future<void> login({required LoginRequest request});

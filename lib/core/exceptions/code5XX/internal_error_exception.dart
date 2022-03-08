@@ -1,4 +1,4 @@
-import 'package:nut_flutter/core/exceptions/code5XX/network5xx_exception.dart';
+import 'network5xx_exception.dart';
 
 class InternalErrorException extends Network5XXException {
   const InternalErrorException(

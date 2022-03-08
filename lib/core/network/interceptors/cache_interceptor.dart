@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:nut_flutter/core/utils/nlog.dart';
+import '../../utils/nlog.dart';
 
 class CacheInterceptor extends Interceptor {
   static const TAG = 'CacheInterceptor';

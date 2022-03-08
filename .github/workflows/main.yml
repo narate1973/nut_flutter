@@ -24,7 +24,7 @@ jobs:
           java-version: 11
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "2.8.1"
+          flutter-version: "2.10.3"
           channel: "stable"
       - name: ⌛️ Run flutter pub get...
         run: flutter pub get
@@ -91,7 +91,7 @@ jobs:
           java-version: 11
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "2.8.1"
+          flutter-version: "2.10.3"
           channel: "stable"
       - run: flutter pub get
       - run: flutter clean

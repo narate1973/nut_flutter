@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nut_flutter/myApp/view/my_app.dart';
+
+import '../../../../../app/view/my_app.dart';
 
 class LoginPageTitle extends StatelessWidget {
   const LoginPageTitle({Key? key}) : super(key: key);

@@ -6,9 +6,11 @@ import 'package:nut_flutter/core/core.dart';
 import 'package:nut_flutter/core/network/app_api_service.dart';
 import 'package:nut_flutter/features/home/presentation/view/pages/home_navigation_page.dart';
 import 'package:nut_flutter/features/auth/presentation/view/pages/login_page.dart';
-import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
-import 'package:nut_flutter/myApp/view/app_splash_screen.dart';
-import 'package:nut_flutter/myApp/view/overlay_layout.dart';
+import 'package:nut_flutter/features/app/view/app_splash_screen.dart';
+import 'package:nut_flutter/features/app/view/overlay_layout.dart';
+import 'package:nut_flutter/injection/injection.dart' as di;
+
+import '../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp._({Key? key}) : super(key: key);
@@ -18,6 +20,7 @@ class MyApp extends StatelessWidget {
   static String appName = FlutterConfig.get(AppEnv.appNameField);
 
   static Future<void> setUpApplciation() async {
+    await di.init();
     WidgetsFlutterBinding.ensureInitialized();
     await FlutterConfig.loadEnvVariables();
     await Firebase.initializeApp();

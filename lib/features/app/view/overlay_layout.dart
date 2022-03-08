@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nut_flutter/myApp/bloc/app_cubit/app_cubit.dart';
+import 'package:nut_flutter/features/app/bloc/app_cubit/app_cubit.dart';
 
 class OverlayLayout extends StatelessWidget {
   final Widget child;

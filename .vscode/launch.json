@@ -26,5 +26,11 @@
                 "lib/main.dart",
             ],
         },
+        {
+            "name" : "dart run all test",
+            "type" : "dart",
+            "request": "launch",
+            "program": "./test/"
+        }
     ]
 }

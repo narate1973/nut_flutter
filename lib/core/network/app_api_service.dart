@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:nut_flutter/core/extensions/response_extensions.dart';
 import 'package:nut_flutter/core/network/interceptors/access_token_interceptor.dart';
-import 'package:nut_flutter/core/network/interceptors/access_token_interceptorx.dart';
 import 'package:nut_flutter/core/network/interceptors/error_handler_interceptor.dart';
 import 'package:nut_flutter/core/network/interceptors/log_interceptor.dart';
-import 'package:dartx/dartx.dart';
 import 'package:nut_flutter/core/network/request/request_body.dart';
 
 abstract class AppApiService {
@@ -20,13 +18,19 @@ abstract class AppApiService {
     _dio.options.connectTimeout = 10000;
     _dio.options.receiveTimeout = 10000;
     _dio.interceptors.addAll([
-      AccessTokenInterceptor(
-        dio: _dio,
-        retryAccessTokenLimit: 3,
-      ), // Should call before another interceptor.
+      AccessTokenInterceptor(),
       NetworkErrorHandlerInterceptor(),
       HttpLogInterceptor(), // Add to last
     ]);
+  }
+
+  static _getAccessTokenInterceptor() =>
+      _dio.interceptors.firstWhere((element) => element is AccessTokenInterceptor)
+          as AccessTokenInterceptor;
+
+  static setUpAccessToken(String accessToken) {
+    final accessTokenInterceptor = _getAccessTokenInterceptor();
+    accessTokenInterceptor.accessToken = accessToken;
   }
 
   Future<Response<T>> get<T>(
@@ -37,8 +41,8 @@ abstract class AppApiService {
     T? Function(DioError exception, StackTrace? stackTrace)? catchError,
     required FutureOr<T> Function(Map<String, dynamic> json) converter,
   }) {
-    TokenInterceptorX? tokenInterceptor = _getTokenInterceptor();
-    tokenInterceptor?.isUseToken = isUseToken;
+    AccessTokenInterceptor? tokenInterceptor = _getAccessTokenInterceptor();
+    tokenInterceptor?.setIsUseToken = isUseToken;
     return _dio
         .get(
           endPoint,
@@ -58,8 +62,8 @@ abstract class AppApiService {
     T? Function(DioError exception, StackTrace? stackTrace)? catchError,
     required FutureOr<T> Function(Map<String, dynamic> json) converter,
   }) {
-    TokenInterceptorX? tokenInterceptor = _getTokenInterceptor();
-    tokenInterceptor?.isUseToken = isUseToken;
+    AccessTokenInterceptor? tokenInterceptor = _getAccessTokenInterceptor();
+    tokenInterceptor?.setIsUseToken = isUseToken;
     return _dio
         .post(
           endPoint,
@@ -80,8 +84,8 @@ abstract class AppApiService {
     T? Function(DioError exception, StackTrace? stackTrace)? catchError,
     required FutureOr<T> Function(Map<String, dynamic> json) converter,
   }) {
-    TokenInterceptorX? tokenInterceptor = _getTokenInterceptor();
-    tokenInterceptor?.isUseToken = isUseToken;
+    AccessTokenInterceptor? tokenInterceptor = _getAccessTokenInterceptor();
+    tokenInterceptor?.setIsUseToken = isUseToken;
     return _dio
         .put(
           endPoint,
@@ -102,8 +106,8 @@ abstract class AppApiService {
     T? Function(DioError exception, StackTrace? stackTrace)? catchError,
     required FutureOr<T> Function(Map<String, dynamic> json) converter,
   }) {
-    TokenInterceptorX? tokenInterceptor = _getTokenInterceptor();
-    tokenInterceptor?.isUseToken = isUseToken;
+    AccessTokenInterceptor? tokenInterceptor = _getAccessTokenInterceptor();
+    tokenInterceptor?.setIsUseToken = isUseToken;
     return _dio
         .delete(
           endPoint,
@@ -113,10 +117,5 @@ abstract class AppApiService {
         )
         .mapJson((json) async => await converter(json))
         .catchWhenError(catchError);
-  }
-
-  TokenInterceptorX? _getTokenInterceptor() {
-    return _dio.interceptors.firstOrNullWhere((interceptor) => interceptor is TokenInterceptorX)
-        as TokenInterceptorX?;
   }
 }

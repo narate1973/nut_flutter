@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:nut_flutter/myApp/bloc/auth_cubit/auth_cubit.dart';
+import 'package:nut_flutter/features/home/presentation/bloc/home_navigation_cubit/home_navigation_cubit.dart';
+import '../../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 
 class HomeDrawer extends StatelessWidget {
   const HomeDrawer({Key? key}) : super(key: key);
@@ -8,6 +9,7 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authCubit = context.read<AuthCubit>();
+    final homeCubit = context.read<HomeNavigationCubit>();
     return Drawer(
       child: Material(
         color: Theme.of(context).primaryColor,
@@ -22,7 +24,7 @@ class HomeDrawer extends StatelessWidget {
             ListTile(
               title: const Text('Item 1'),
               onTap: () {
-                Navigator.pop(context);
+                homeCubit.onTest();
               },
             ),
             ListTile(
